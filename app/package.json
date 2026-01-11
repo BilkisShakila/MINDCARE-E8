@@ -1,7 +1,10 @@
 {
   "name": "mindcare",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "dotenv": "^17.2.3",
     "ejs": "^3.1.9",
