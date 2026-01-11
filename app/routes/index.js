@@ -51,16 +51,24 @@ router.post("/register", (req, res) => {
   const { name, email, password } = req.body;
 
   db.query(
-    "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-    [name, email, password],
-    err => {
-      if (err) {
-        console.error(err);
+  "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+  [name, email, password],
+  (err) => {
+    if (err) {
+      console.error("REGISTER ERROR:", err);
+
+      // ✅ hanya kalau benar-benar duplicate email
+      if (err.code === "ER_DUP_ENTRY") {
         return res.send("Email sudah terdaftar");
       }
-      res.redirect("/login");
+
+      // ✅ error lain
+      return res.send("Terjadi kesalahan database");
     }
-  );
+
+    res.redirect("/login");
+  }
+);
 });
 
 // =====================
