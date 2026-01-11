@@ -19,9 +19,9 @@ app.use(express.static(path.join(__dirname, "public")));
 // session
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || "mindcare-secret",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
   })
 );
 
