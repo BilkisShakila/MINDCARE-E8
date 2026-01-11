@@ -12,7 +12,8 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   app:
-    build: ./app
+    build: 
+      context: ./app
     container_name: mindcare-app
     depends_on:
       - mysql
