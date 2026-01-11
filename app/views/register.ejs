@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | MindCare</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">🧠 MindCare</div>
+</header>
+
+<main class="container">
+
+  <!-- KONTEN -->
+  <section class="content">
+    <h2>📝 Buat Akun</h2>
+    <p class="subtitle">Daftar untuk mulai mencatat suasana hatimu</p>
+
+    <form class="mood-form" method="POST" action="/register">
+      <input name="name" placeholder="Nama Lengkap" required>
+      <input name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button>Daftar</button>
+    </form>
+
+    <p style="margin-top:12px;">
+      Sudah punya akun?
+      <a href="/login">Login di sini</a>
+    </p>
+  </section>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h3>✨ Manfaat Akun</h3>
+    <div class="tip">Catatan mood tersimpan aman</div>
+    <div class="tip">Bisa edit & hapus mood kapan saja</div>
+  </aside>
+
+</main>
+
+</body>
+</html>

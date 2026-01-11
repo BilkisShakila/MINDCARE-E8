@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MindCare</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">🧠 MindCare</div>
+        <nav>
+            <a href="/" style="margin-right:12px;">Timeline</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- KONTEN KIRI -->
+        <section class="content">
+            <h2>🌱 Timeline Hari Ini</h2>
+            <p class="subtitle">Bagaimana perasaanmu hari ini?</p>
+
+            <!-- FORM INPUT -->
+            <form class="mood-form" method="POST" action="/mood">
+                <select name="mood_level" required>
+                    <option value="">Pilih mood</option>
+                    <option>Senang</option>
+                    <option>Tenang</option>
+                    <option>Cemas</option>
+                    <option>Marah</option>
+                </select>
+
+                <input name="notes" placeholder="Tulis catatan singkatmu..." required>
+                <button>Simpan</button>
+            </form>
+
+            <h3 style="margin-top:32px;">📜 Riwayat Mood</h3>
+
+            <% if (moods.length===0) { %>
+                <p class="subtitle">Belum ada catatan mood.</p>
+                <% } %>
+
+                    <% moods.forEach(m=> { %>
+                        <div class="mood-card <%= m.mood_level.toLowerCase() %>">
+
+                            <div class="mood-header">
+                                <span class="mood-emoji">
+                                    <% if (m.mood_level==='Senang' ) { %> 😀
+                                        <% } else if (m.mood_level==='Tenang' ) { %> 😌
+                                            <% } else if (m.mood_level==='Cemas' ) { %> 😟
+                                                <% } else if (m.mood_level==='Marah' ) { %> 😡
+                                                    <% } %>
+                                </span>
+
+                                <strong>
+                                    <%= m.mood_level %>
+                                </strong>
+                            </div>
+
+                            <p>
+                                <%= m.notes %>
+                            </p>
+
+                            <div class="mood-actions">
+                                <a href="/mood/edit/<%= m.mood_id %>">✏️ Edit</a> |
+                                <a href="/mood/delete/<%= m.mood_id %>" onclick="return confirm('Hapus?')">🗑️
+                                    Delete</a>
+                            </div>
+
+                        </div>
+                        <% }) %>
+
+        </section>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h3>💡 Tips Kesehatan Mental</h3>
+
+            <div class="tip">
+                Istirahat sejenak dan coba latihan pernapasan 5 menit.
+            </div>
+
+            <div class="tip">
+                Tulis hal kecil yang membuat kamu bersyukur hari ini.
+            </div>
+        </aside>
+
+    </main>
+
+</body>
+
+</html>

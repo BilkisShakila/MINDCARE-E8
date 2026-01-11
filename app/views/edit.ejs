@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Mood | MindCare</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">🧠 MindCare</div>
+  <nav>
+    <a href="/">⬅️ Kembali</a>
+  </nav>
+</header>
+
+<main class="container">
+  <!-- KONTEN KIRI -->
+  <section class="content">
+    <h2>✏️ Edit Mood</h2>
+    <p class="subtitle">Perbarui catatan suasana hatimu</p>
+
+    <form class="mood-form" method="POST" action="/mood/update/<%= mood.mood_id %>">
+      <select name="mood_level">
+        <option <%= mood.mood_level==='Senang'?'selected':'' %>>Senang</option>
+        <option <%= mood.mood_level==='Tenang'?'selected':'' %>>Tenang</option>
+        <option <%= mood.mood_level==='Cemas'?'selected':'' %>>Cemas</option>
+        <option <%= mood.mood_level==='Marah'?'selected':'' %>>Marah</option>
+      </select>
+
+      <input name="notes" value="<%= mood.notes %>" required>
+      <button>Update</button>
+    </form>
+  </section>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h3>ℹ️ Catatan</h3>
+    <div class="tip">
+      Kamu bisa mengubah mood dan catatan kapan saja.
+    </div>
+    <div class="tip">
+      Perubahan akan langsung tersimpan di timeline.
+    </div>
+  </aside>
+</main>
+
+</body>
+</html>
