@@ -20,7 +20,7 @@ services:
     environment:
       DB_HOST: mysql
       DB_USER: root
-      DB_PASS: root
+      DB_PASSWORD: root
       DB_NAME: mindcare
     expose:
       - "4000"
