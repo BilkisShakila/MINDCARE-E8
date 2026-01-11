@@ -5,7 +5,8 @@ USE mindcare;
 CREATE TABLE users (
   user_id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100),
-  email VARCHAR(100)
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(100)
 );
 
 CREATE TABLE moods (
